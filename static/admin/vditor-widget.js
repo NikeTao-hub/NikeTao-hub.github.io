@@ -1,7 +1,7 @@
 (function () {
 
   const VditorWidget = createClass({
-    
+
     getInitialState() {
       return {
         value: this.props.value || ""
@@ -13,7 +13,7 @@
 
       this.editor = new Vditor(this.el, {
 
-        height: 600,
+        height: "calc(100vh - 200px)",
 
         mode: "wysiwyg",
 
@@ -21,31 +21,121 @@
           enable: false
         },
 
+
         value: this.state.value,
 
 
-        input: (value) => {
-          this.setState({
-            value
-          });
+        toolbar: [
+
+          "headings",
+          "bold",
+          "italic",
+          "strike",
+          "|",
+
+          "quote",
+          "list",
+          "ordered-list",
+
+          "|",
+
+          "check",
+          "table",
+          "link",
+
+          "|",
+
+          "code",
+          "inline-code",
+
+          "|",
+
+          "upload",
+          "record",
+
+          "|",
+
+          "undo",
+          "redo",
+
+          "|",
+
+          "fullscreen"
+
+        ],
+
+
+        counter: {
+          enable: true
+        },
+
+
+        preview: {
+
+          markdown: {
+
+            toc: true
+
+          }
+
+        },
+
+
+        cache: {
+
+          enable:false
+
+        },
+
+
+        after() {
+
+          this.editor.setValue(
+            this.state.value
+          );
+
+        },
+
+
+        input: (value)=>{
 
           this.props.onChange(value);
+
         }
+
 
       });
 
     },
 
 
-    render() {
+    componentWillUnmount(){
+
+      if(this.editor){
+
+        this.editor.destroy();
+
+      }
+
+    },
+
+
+    render(){
 
       return h(
+
         "div",
+
         {
-          ref: el => {
-            this.el = el;
+
+          ref:(el)=>{
+
+            this.el=el;
+
           }
+
         }
+
       );
 
     }
@@ -53,9 +143,13 @@
   });
 
 
+
   CMS.registerWidget(
+
     "vditor",
+
     VditorWidget
+
   );
 
 
