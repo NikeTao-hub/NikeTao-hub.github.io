@@ -5,7 +5,7 @@ backend:
   base_url: https://oauth.niketao.com
   auth_endpoint: /auth
 
-
+site_domain: niketao.com
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
