@@ -7,7 +7,6 @@ backend:
 
 media_folder: "static/images"
 public_folder: "/images"
-
 locale: zh_Hans
 
 collections:
@@ -20,16 +19,13 @@ collections:
       - label: "标题"
         name: "title"
         widget: "string"
-
       - label: "发布日期"
         name: "date"
         widget: "datetime"
-
       - label: "草稿"
         name: "draft"
         widget: "boolean"
         default: false
-
       - label: "正文"
         name: "body"
         widget: "markdown"
