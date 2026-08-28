@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: NikeTao-hub/NikeTao-hub.github.io
+  branch: main
+
+
+media_folder: "static/images/uploads"
+
+public_folder: "/images/uploads"
+
+
+collections:
+
+  - name: posts
+    label: 文章
+    folder: content/post
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+
+    fields:
+
+      - name: title
+        label: 标题
+        widget: string
+
+
+      - name: date
+        label: 日期
+        widget: datetime
+
+
+      - name: body
+        label: 正文
+        widget: markdown
