@@ -2,10 +2,7 @@ backend:
   name: github
   repo: NikeTao-hub/NikeTao-hub.github.io
   branch: main
-  base_url: https://oauth.niketao.com
-  auth_endpoint: /auth
 
-site_domain: niketao.com
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
