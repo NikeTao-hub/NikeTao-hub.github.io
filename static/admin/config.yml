@@ -3,6 +3,7 @@ backend:
   repo: NikeTao-hub/niketao.github.io
   branch: main
   base_url: https://oauth.niketao.com
+  auth_endpoint: /auth
 
 media_folder: "static/images"
 public_folder: "/images"
