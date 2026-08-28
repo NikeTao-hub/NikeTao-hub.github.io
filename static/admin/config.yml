@@ -3,10 +3,10 @@ backend:
   repo: NikeTao-hub/NikeTao-hub.github.io
   branch: main
   base_url: https://oauth.niketao.com
+  auth_endpoint: /auth
 
 
 media_folder: "static/images/uploads"
-
 public_folder: "/images/uploads"
 
 
@@ -24,11 +24,9 @@ collections:
         label: 标题
         widget: string
 
-
       - name: date
         label: 日期
         widget: datetime
-
 
       - name: body
         label: 正文
