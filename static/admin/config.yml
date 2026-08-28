@@ -33,7 +33,7 @@ collections:
 
       - label: "正文"
         name: "body"
-        widget: "richtext"
+        widget: "vditor"
         modes:
           - rich_text
           - raw
