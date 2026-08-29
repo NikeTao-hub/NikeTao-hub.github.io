@@ -26,4 +26,4 @@ collections:
 
       - name: body
         label: 正文
-        widget: markdown
+        widget: vditor
