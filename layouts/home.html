@@ -1,0 +1,59 @@
+{{ define "main" }}
+
+
+    <section class="nike-home-hero">
+
+        <p class="nike-home-description">
+            记录研究、技术与生活，<br>
+            留下值得回忆的片段
+        </p>
+
+    </section>
+
+    <section class="nike-home-posts">
+
+        <div class="nike-home-section-header">
+
+            <h2>Latest</h2>
+
+            <a href="{{ "/post/" | relURL }}">
+                全部文章
+                <span>→</span>
+            </a>
+
+        </div>
+
+
+        {{- $paginator := partial "helper/paginator.html" . -}}
+
+        <section class="article-list">
+
+            {{ range $paginator.Pages }}
+
+                {{ partial "article-list/default" . }}
+
+            {{ end }}
+
+        </section>
+
+    </section>
+
+
+    {{- partial "pagination.html" . -}}
+
+    {{- partial "footer/footer" . -}}
+
+
+{{ end }}
+
+
+{{ define "right-sidebar" }}
+
+    {{ partial "sidebar/right.html"
+        (dict
+            "Context" .
+            "Scope" "homepage"
+        )
+    }}
+
+{{ end }}
