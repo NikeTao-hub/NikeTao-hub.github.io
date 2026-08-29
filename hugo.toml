@@ -1,31 +1,53 @@
 baseURL = "https://niketao.com/"
+
 languageCode = "zh-cn"
+
 title = "Nike Tao"
+
 theme = "hugo-theme-stack"
 
 [params]
+
     mainSections = ["post"]
 
 [params.sidebar]
+
     emoji = "🌌"
+
     subtitle = "Research · Technology · Life"
+
+[params.article]
+
+    math = true
 
 [menu]
 
 [[menu.main]]
+
     identifier = "home"
+
     name = "首页"
+
     url = "/"
+
     weight = 1
 
 [[menu.main]]
+
     identifier = "posts"
+
     name = "文章"
+
     url = "/post/"
+
     weight = 2
 
 [[menu.main]]
+
     identifier = "about"
+
     name = "关于"
+
     url = "/about/"
+
     weight = 3
