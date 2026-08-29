@@ -324,3 +324,386 @@ body {
     }
 
 }
+
+/* =========================================================
+   Nike Tao Blog — Homepage
+   ========================================================= */
+
+
+/* =========================================================
+   Home Hero
+   ========================================================= */
+
+.nike-home-hero {
+
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+
+    margin-bottom: 0.5rem;
+
+    border-bottom:
+        1px solid
+        var(--card-separator-color);
+
+}
+
+
+/* ---------------------------------------------------------
+   Eyebrow
+   --------------------------------------------------------- */
+
+.nike-home-eyebrow {
+
+    margin-bottom: 1rem;
+
+    font-family: var(--nike-sans);
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+
+    font-weight: 500;
+
+    letter-spacing: 0.01em;
+
+    color:
+        var(--body-text-color);
+
+    opacity: 0.55;
+
+}
+
+
+/* ---------------------------------------------------------
+   Main title
+   --------------------------------------------------------- */
+
+.nike-home-title {
+
+    margin: 0;
+
+    font-family: var(--nike-sans);
+
+    font-size:
+        clamp(
+            3rem,
+            7vw,
+            5rem
+        );
+
+    line-height: 1.05;
+
+    font-weight: 700;
+
+    letter-spacing: -0.045em;
+
+    color:
+        var(--body-text-color);
+
+}
+
+
+/* ---------------------------------------------------------
+   Description
+   --------------------------------------------------------- */
+
+.nike-home-description {
+    max-width: 680px;
+
+    margin: 0;
+
+    font-family: var(--nike-serif);
+
+    font-size: 1.4rem;
+    line-height: 1.7;
+
+    font-weight: 400;
+
+    color: var(--body-text-color);
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   Latest Posts
+   ========================================================= */
+
+.nike-home-posts {
+
+    margin-top: 2.75rem;
+
+}
+
+
+/* =========================================================
+   Section Header
+   ========================================================= */
+
+.nike-home-section-header {
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: space-between;
+
+    margin-bottom: 1.5rem;
+
+}
+
+
+/* ---------------------------------------------------------
+   Latest title
+   --------------------------------------------------------- */
+
+.nike-home-section-header h2 {
+
+    margin: 0;
+
+    font-family: var(--nike-sans);
+
+    font-size: 1.35rem;
+
+    line-height: 1.4;
+
+    font-weight: 650;
+
+    letter-spacing: -0.02em;
+
+}
+
+
+/* ---------------------------------------------------------
+   All posts link
+   --------------------------------------------------------- */
+
+.nike-home-section-header a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.35rem;
+
+    font-family: var(--nike-sans);
+
+    font-size: 0.9rem;
+
+    font-weight: 500;
+
+    color:
+        var(--body-text-color);
+
+    opacity: 0.55;
+
+    text-decoration: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.nike-home-section-header a:hover {
+
+    opacity: 1;
+
+    transform:
+        translateX(2px);
+
+}
+
+
+.nike-home-section-header a span {
+
+    font-size: 1rem;
+
+}
+
+
+/* =========================================================
+   Article List
+   ========================================================= */
+
+.nike-home-posts
+.article-list {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   Improve article list rhythm
+   ========================================================= */
+
+.nike-home-posts
+.article-list
+.article-list--compact {
+
+    margin-top: 0;
+
+}
+
+
+/* =========================================================
+   Homepage article cards
+   ========================================================= */
+
+.nike-home-posts
+.article-list
+.article {
+
+    transition:
+        transform 0.2s ease;
+
+}
+
+
+/* =========================================================
+   Global text rendering
+   ========================================================= */
+
+html {
+
+    text-rendering:
+        optimizeLegibility;
+
+}
+
+
+body {
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    -moz-osx-font-smoothing:
+        grayscale;
+
+}
+
+
+/* =========================================================
+   Article images
+   ========================================================= */
+
+.article-content img {
+
+    border-radius: 8px;
+
+}
+
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+
+    /* -----------------------------------------------------
+       Hero
+       ----------------------------------------------------- */
+
+    .nike-home-hero {
+
+        padding-top: 2.5rem;
+
+        padding-bottom: 2.25rem;
+
+    }
+
+
+    .nike-home-title {
+
+        font-size: 3rem;
+
+        letter-spacing:
+            -0.04em;
+
+    }
+
+
+    .nike-home-description {
+        margin-top: 0;
+
+        font-size: 1.15rem;
+        line-height: 1.7;
+    }
+
+
+    /* -----------------------------------------------------
+       Latest
+       ----------------------------------------------------- */
+
+    .nike-home-posts {
+
+        margin-top: 2.25rem;
+
+    }
+
+
+    .nike-home-section-header {
+
+        margin-bottom: 1rem;
+
+    }
+
+
+}
+
+/* =========================================================
+   Homepage Typography
+   ========================================================= */
+
+/* 首页整体文字 */
+.nike-home-hero,
+.nike-home-posts {
+    font-family: var(--nike-sans);
+}
+
+
+/* 首页介绍语 */
+.nike-home-description {
+    font-size: 1.5rem;
+    line-height: 1.75;
+}
+
+
+/* Latest */
+.nike-home-section-header h2 {
+    font-size: 1.5rem;
+}
+
+
+/* 全部文章 */
+.nike-home-section-header a {
+    font-size: 1rem;
+}
+
+
+/* 首页文章列表整体稍微放大 */
+.nike-home-posts .article-list {
+    font-size: 1.05rem;
+}
+
+
+/* 手机端 */
+@media (max-width: 768px) {
+
+    .nike-home-description {
+        font-size: 1.25rem;
+        line-height: 1.7;
+    }
+
+    .nike-home-section-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .nike-home-section-header a {
+        font-size: 0.95rem;
+    }
+
+}
