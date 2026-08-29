@@ -71,11 +71,9 @@
 
             {{ range $paginator.Pages }}
 
-                {{ $categories := .Params.categories | default (slice) }}
-
                 <article
                     class="nike-filterable-post"
-                    data-categories="{{ delimit $categories "|" }}"
+                    data-category="{{ .Params.categories | default "" }}"
                 >
 
                     {{ partial "article-list/default" . }}
@@ -173,25 +171,43 @@
                                 posts.forEach(
                                     function (post) {
 
-                                        const categories =
-                                            post.dataset.categories
-                                                ? post.dataset.categories
-                                                .split("|")
-                                                : [];
+                                        const postCategory =
+                                            post.dataset.category || "";
 
 
                                         if (
                                             category === "all" ||
-                                            categories.includes(category)
+                                            postCategory === category
                                         ) {
 
-                                            post.style.display =
-                                                "";
+                                            post.style.display = "";
+
+                                            requestAnimationFrame(
+                                                function () {
+
+                                                    post.style.opacity = "1";
+
+                                                    post.style.transform =
+                                                        "translateY(0)";
+
+                                                }
+                                            );
 
                                         } else {
 
-                                            post.style.display =
-                                                "none";
+                                            post.style.opacity = "0";
+
+                                            post.style.transform =
+                                                "translateY(4px)";
+
+                                            setTimeout(
+                                                function () {
+
+                                                    post.style.display = "none";
+
+                                                },
+                                                180
+                                            );
 
                                         }
 

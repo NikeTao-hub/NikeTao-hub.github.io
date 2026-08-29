@@ -716,12 +716,11 @@ body {
 
     display: grid;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     width: 100%;
 
-    margin: 2rem 0 3rem;
+    margin: 2.5rem 0 3rem;
 
     border-top:
         1px solid var(--card-separator-color);
@@ -736,7 +735,13 @@ body {
 
     position: relative;
 
-    min-height: 76px;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 78px;
 
     padding: 1rem;
 
@@ -756,23 +761,28 @@ body {
 
     cursor: pointer;
 
-    opacity: 0.55;
+    opacity: 0.48;
 
     transition:
-        opacity 0.2s ease,
-        background-color 0.2s ease;
+        opacity 0.25s ease,
+        background-color 0.25s ease;
 
 }
 
+
+/* Hover */
 
 .nike-category-button:hover {
 
-    opacity: 0.9;
+    opacity: 0.85;
+
+    background-color:
+        rgba(127, 127, 127, 0.05);
 
 }
 
 
-/* Active category */
+/* Active */
 
 .nike-category-button.is-active {
 
@@ -783,9 +793,7 @@ body {
 }
 
 
-/*
- * Active underline
- */
+/* Active indicator */
 
 .nike-category-button.is-active::after {
 
@@ -793,13 +801,15 @@ body {
 
     position: absolute;
 
-    left: 20%;
+    left: 25%;
 
-    right: 20%;
+    right: 25%;
 
     bottom: -1px;
 
-    height: 2px;
+    height: 3px;
+
+    border-radius: 3px 3px 0 0;
 
     background:
         var(--body-text-color);
@@ -808,13 +818,14 @@ body {
 
 
 /* =========================================================
-   Filtered posts
+   Homepage Filter Animation
    ========================================================= */
 
 .nike-filterable-post {
 
     transition:
-        opacity 0.2s ease;
+        opacity 0.2s ease,
+        transform 0.2s ease;
 
 }
 
@@ -827,8 +838,7 @@ body {
 
     .nike-home-categories {
 
-        grid-template-columns:
-            repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr);
 
         margin-top: 1.75rem;
 
@@ -839,23 +849,35 @@ body {
 
     .nike-category-button {
 
-        min-height: 56px;
+        min-height: 62px;
 
-        padding:
-            0.7rem 0.25rem;
+        padding: 0.6rem 0.25rem;
 
-        font-size: 0.9rem;
+        font-size: 1rem;
 
     }
 
 
     .nike-category-button.is-active::after {
 
-        left: 15%;
+        left: 20%;
 
-        right: 15%;
+        right: 20%;
+
+        height: 2px;
 
     }
 
 }
 
+.nike-filterable-post {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+
+}
