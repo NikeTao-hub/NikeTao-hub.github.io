@@ -43,7 +43,7 @@ collections:
         options:
           - 科研
           - 生活
-          - 思考
+          - 技术
         hint: "选择文章所属的主要分类"
 
       - name: tags
