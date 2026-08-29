@@ -36,6 +36,16 @@ collections:
         required: false
         hint: "用于文章列表和页面摘要，建议 50～100 字"
 
+      - name: categories
+        label: 分类
+        widget: select
+        required: true
+        options:
+          - 科研
+          - 生活
+          - 思考
+        hint: "选择文章所属的主要分类"
+
       - name: tags
         label: 标签
         widget: list

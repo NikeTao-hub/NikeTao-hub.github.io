@@ -19,6 +19,12 @@ theme = "hugo-theme-stack"
 [params.article]
 
     math = true
+    
+[taxonomies]
+
+    category = "categories"
+
+    tag = "tags"
 
 [menu]
 

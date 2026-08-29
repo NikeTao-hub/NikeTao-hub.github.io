@@ -1,6 +1,5 @@
 {{ define "main" }}
 
-
     <section class="nike-home-hero">
 
         <p class="nike-home-description">
@@ -10,11 +9,53 @@
 
     </section>
 
+
+    <!-- Category Navigation -->
+
+    <nav class="nike-home-categories" aria-label="文章分类">
+
+        <button
+            class="nike-category-button is-active"
+            data-category="all"
+            type="button"
+        >
+            全部
+        </button>
+
+        <button
+            class="nike-category-button"
+            data-category="科研"
+            type="button"
+        >
+            科研
+        </button>
+
+        <button
+            class="nike-category-button"
+            data-category="生活"
+            type="button"
+        >
+            生活
+        </button>
+
+        <button
+            class="nike-category-button"
+            data-category="思考"
+            type="button"
+        >
+            思考
+        </button>
+
+    </nav>
+
+
     <section class="nike-home-posts">
 
         <div class="nike-home-section-header">
 
-            <h2>Latest</h2>
+            <h2 id="nike-category-title">
+                Latest
+            </h2>
 
             <a href="{{ "/post/" | relURL }}">
                 全部文章
@@ -26,11 +67,20 @@
 
         {{- $paginator := partial "helper/paginator.html" . -}}
 
-        <section class="article-list">
+        <section class="article-list nike-filterable-posts">
 
             {{ range $paginator.Pages }}
 
-                {{ partial "article-list/default" . }}
+                {{ $categories := .Params.categories | default (slice) }}
+
+                <article
+                    class="nike-filterable-post"
+                    data-categories="{{ delimit $categories "|" }}"
+                >
+
+                    {{ partial "article-list/default" . }}
+
+                </article>
 
             {{ end }}
 
@@ -42,6 +92,122 @@
     {{- partial "pagination.html" . -}}
 
     {{- partial "footer/footer" . -}}
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const buttons =
+                    document.querySelectorAll(
+                        ".nike-category-button"
+                    );
+
+                const posts =
+                    document.querySelectorAll(
+                        ".nike-filterable-post"
+                    );
+
+                const title =
+                    document.getElementById(
+                        "nike-category-title"
+                    );
+
+
+                buttons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                const category =
+                                    this.dataset.category;
+
+
+                                /*
+                                 * Update active button
+                                 */
+
+                                buttons.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "is-active"
+                                        );
+
+                                    }
+                                );
+
+
+                                this.classList.add(
+                                    "is-active"
+                                );
+
+
+                                /*
+                                 * Update title
+                                 */
+
+                                if (
+                                    category === "all"
+                                ) {
+
+                                    title.textContent =
+                                        "Latest";
+
+                                } else {
+
+                                    title.textContent =
+                                        category;
+
+                                }
+
+
+                                /*
+                                 * Filter posts
+                                 */
+
+                                posts.forEach(
+                                    function (post) {
+
+                                        const categories =
+                                            post.dataset.categories
+                                                ? post.dataset.categories
+                                                .split("|")
+                                                : [];
+
+
+                                        if (
+                                            category === "all" ||
+                                            categories.includes(category)
+                                        ) {
+
+                                            post.style.display =
+                                                "";
+
+                                        } else {
+
+                                            post.style.display =
+                                                "none";
+
+                                        }
+
+                                    }
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
 
 
 {{ end }}
