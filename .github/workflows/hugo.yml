@@ -47,6 +47,14 @@ jobs:
           HUGO_ENV: production
         run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
+      - name: Check images
+        run: |
+          echo "===== SOURCE ====="
+          find static/images/uploads -maxdepth 1 -type f -print
+
+          echo "===== PUBLIC ====="
+          find public/images/uploads -maxdepth 1 -type f -print
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
