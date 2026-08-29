@@ -50,10 +50,22 @@ jobs:
       - name: Check images
         run: |
           echo "===== SOURCE ====="
-          find static/images/uploads -maxdepth 1 -type f -print
+
+          if [ -d "static/images/uploads" ]; then
+            find static/images/uploads -maxdepth 1 -type f -print
+          else
+            echo "static/images/uploads does not exist"
+            echo "No source images found."
+          fi
 
           echo "===== PUBLIC ====="
-          find public/images/uploads -maxdepth 1 -type f -print
+
+          if [ -d "public/images/uploads" ]; then
+            find public/images/uploads -maxdepth 1 -type f -print
+          else
+            echo "public/images/uploads does not exist"
+            echo "No generated images found."
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
