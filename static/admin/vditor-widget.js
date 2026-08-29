@@ -7,6 +7,23 @@
   }
 
   /*
+   * Fix Vditor fullscreen being covered by Decap CMS header
+   */
+  var fullscreenStyle = document.createElement('style');
+
+  fullscreenStyle.textContent = `
+    .vditor--fullscreen {
+      z-index: 99999 !important;
+    }
+
+    .vditor--fullscreen .vditor-toolbar {
+      z-index: 100000 !important;
+    }
+  `;
+
+  document.head.appendChild(fullscreenStyle);
+
+  /*
    * Load Vditor CSS
    */
   var css = document.createElement('link');
