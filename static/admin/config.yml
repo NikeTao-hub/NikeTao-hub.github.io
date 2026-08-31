@@ -9,8 +9,8 @@ backend:
 locale: zh_Hans
 publish_mode: editorial_workflow
 
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+# media_folder: "static/images/uploads"
+# public_folder: "/images/uploads"
 
 collections:
   - name: posts
@@ -58,11 +58,9 @@ collections:
 
       - name: image
         label: 封面图
-        widget: image
+        widget: cloudinary-image
         required: false
-        media_folder: "/static/images/uploads"
-        public_folder: "/images/uploads"
-        hint: "文章封面图，可选"
+        hint: "上传到 Cloudinary，自动保存图片 URL"
 
       - name: toc
         label: 显示目录

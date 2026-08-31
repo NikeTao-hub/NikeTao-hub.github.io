@@ -7,8 +7,26 @@
   }
 
   /*
-   * Fix Vditor fullscreen being covered by Decap CMS header
+   * ============================================================
+   * Cloudinary configuration
+   * ============================================================
+   *
+   * IMPORTANT:
+   * - Cloud Name is safe to expose.
+   * - Upload Preset MUST be Unsigned.
+   * - NEVER put API Secret here.
+   *
    */
+
+  var CLOUDINARY_CLOUD_NAME = 'tr9eesw3';
+  var CLOUDINARY_UPLOAD_PRESET = 'blog_images';
+
+  /*
+   * ============================================================
+   * Fix Vditor fullscreen being covered by Decap CMS header
+   * ============================================================
+   */
+
   var fullscreenStyle = document.createElement('style');
 
   fullscreenStyle.textContent = `
@@ -24,18 +42,30 @@
   document.head.appendChild(fullscreenStyle);
 
   /*
+   * ============================================================
    * Load Vditor CSS
+   * ============================================================
    */
+
   var css = document.createElement('link');
+
   css.rel = 'stylesheet';
-  css.href = 'https://unpkg.com/vditor@3.11.0/dist/index.css';
+
+  css.href =
+    'https://unpkg.com/vditor@3.11.0/dist/index.css';
+
   document.head.appendChild(css);
 
   /*
+   * ============================================================
    * Load Vditor JS
+   * ============================================================
    */
+
   var script = document.createElement('script');
-  script.src = 'https://unpkg.com/vditor@3.11.0/dist/index.min.js';
+
+  script.src =
+    'https://unpkg.com/vditor@3.11.0/dist/index.min.js';
 
   script.onload = function () {
     registerWidget();
@@ -47,61 +77,15 @@
 
   document.head.appendChild(script);
 
-
   /*
-   * GitHub configuration
-   */
-  var GITHUB_OWNER = 'NikeTao-hub';
-  var GITHUB_REPO = 'NikeTao-hub.github.io';
-  var GITHUB_BRANCH = 'main';
-
-  var IMAGE_DIR = 'static/images/uploads';
-
-
-  /*
-   * Get current Decap GitHub token
-   */
-  function getGitHubToken() {
-
-    var raw =
-      localStorage.getItem('decap-cms-user');
-
-    if (!raw) {
-      throw new Error(
-        '没有找到 Decap 登录信息，请重新登录后台。'
-      );
-    }
-
-    var user;
-
-    try {
-      user = JSON.parse(raw);
-    } catch (error) {
-      throw new Error(
-        'Decap 登录信息解析失败，请重新登录后台。'
-      );
-    }
-
-    if (
-      !user ||
-      user.backendName !== 'github' ||
-      !user.token
-    ) {
-      throw new Error(
-        '没有找到 GitHub 登录凭证，请重新登录后台。'
-      );
-    }
-
-    return user.token;
-  }
-
-
-  /*
+   * ============================================================
    * Generate unique filename
+   * ============================================================
    */
-  function generateFilename(file) {
 
-    var name = file.name || 'image';
+  function generateFilename(file) {
+    var name =
+      file.name || 'image';
 
     var dot =
       name.lastIndexOf('.');
@@ -126,7 +110,8 @@
       basename = 'image';
     }
 
-    var now = new Date();
+    var now =
+      new Date();
 
     var timestamp =
       now.getFullYear() +
@@ -139,83 +124,39 @@
       '-' +
       String(now.getMilliseconds()).padStart(3, '0');
 
-    return timestamp + '-' + basename + extension;
+    return (
+      timestamp +
+      '-' +
+      basename +
+      extension
+    );
   }
 
-
   /*
-   * Convert File to Base64
-   */
-  function fileToBase64(file) {
-
-    return new Promise(function (resolve, reject) {
-
-      var reader =
-        new FileReader();
-
-      reader.onload = function () {
-
-        var result =
-          reader.result;
-
-        if (
-          typeof result !== 'string'
-        ) {
-          reject(
-            new Error('图片读取失败。')
-          );
-          return;
-        }
-
-        var comma =
-          result.indexOf(',');
-
-        if (comma === -1) {
-          reject(
-            new Error('图片格式解析失败。')
-          );
-          return;
-        }
-
-        resolve(
-          result.substring(comma + 1)
-        );
-      };
-
-      reader.onerror = function () {
-        reject(
-          new Error('图片读取失败。')
-        );
-      };
-
-      reader.readAsDataURL(file);
-    });
-  }
-
-
-  /*
+   * ============================================================
    * Compress large images in browser
    *
    * > 5 MB:
-   * JPEG compression
+   *   resize to max 3000 x 3000
+   *   JPEG quality 0.85
    *
    * <= 5 MB:
-   * original file
+   *   keep original
+   * ============================================================
    */
-  function compressImage(file) {
 
+  function compressImage(file) {
     var MAX_SIZE =
       5 * 1024 * 1024;
 
-    if (
-      file.size <= MAX_SIZE
-    ) {
+    if (file.size <= MAX_SIZE) {
       return Promise.resolve(file);
     }
 
     /*
      * Only compress raster images.
      */
+
     if (
       !file.type ||
       file.type.indexOf('image/') !== 0 ||
@@ -226,7 +167,6 @@
     }
 
     return new Promise(function (resolve) {
-
       var image =
         new Image();
 
@@ -234,23 +174,25 @@
         URL.createObjectURL(file);
 
       image.onload = function () {
-
         URL.revokeObjectURL(objectURL);
 
         var maxWidth = 3000;
         var maxHeight = 3000;
 
-        var width = image.width;
-        var height = image.height;
+        var width =
+          image.width;
+
+        var height =
+          image.height;
 
         /*
          * Resize very large images.
          */
+
         if (
           width > maxWidth ||
           height > maxHeight
         ) {
-
           var scale =
             Math.min(
               maxWidth / width,
@@ -267,8 +209,11 @@
         var canvas =
           document.createElement('canvas');
 
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width =
+          width;
+
+        canvas.height =
+          height;
 
         var context =
           canvas.getContext('2d');
@@ -288,7 +233,6 @@
 
         canvas.toBlob(
           function (blob) {
-
             if (!blob) {
               resolve(file);
               return;
@@ -298,6 +242,7 @@
              * Only use compressed version
              * if it is actually smaller.
              */
+
             if (
               blob.size >= file.size
             ) {
@@ -309,7 +254,8 @@
               file.name.replace(
                 /\.[^.]+$/,
                 ''
-              ) + '.jpg';
+              ) +
+              '.jpg';
 
             var compressed =
               new File(
@@ -323,7 +269,6 @@
               );
 
             resolve(compressed);
-
           },
           'image/jpeg',
           0.85
@@ -331,29 +276,48 @@
       };
 
       image.onerror = function () {
-
         URL.revokeObjectURL(objectURL);
-
         resolve(file);
       };
 
-      image.src = objectURL;
-
+      image.src =
+        objectURL;
     });
   }
 
-
   /*
-   * Upload image to GitHub Contents API
+   * ============================================================
+   * Upload image to Cloudinary
+   * ============================================================
    */
-  async function uploadImageToGitHub(file) {
 
-    var token =
-      getGitHubToken();
+  async function uploadImageToCloudinary(file) {
+    /*
+     * Basic configuration check
+     */
+
+    if (
+      !CLOUDINARY_CLOUD_NAME ||
+      CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'
+    ) {
+      throw new Error(
+        'Cloudinary Cloud Name 尚未配置。'
+      );
+    }
+
+    if (
+      !CLOUDINARY_UPLOAD_PRESET ||
+      CLOUDINARY_UPLOAD_PRESET === 'YOUR_UPLOAD_PRESET'
+    ) {
+      throw new Error(
+        'Cloudinary Upload Preset 尚未配置。'
+      );
+    }
 
     /*
      * 20 MB hard limit.
      */
+
     var HARD_LIMIT =
       20 * 1024 * 1024;
 
@@ -366,13 +330,13 @@
     /*
      * Compress large images.
      */
+
     var processedFile =
       await compressImage(file);
 
     if (
       processedFile !== file
     ) {
-
       console.log(
         'Image compressed:',
         file.size,
@@ -381,87 +345,132 @@
       );
     }
 
+    /*
+     * Generate filename.
+     */
+
     var filename =
       generateFilename(processedFile);
 
-    var path =
-      IMAGE_DIR + '/' + filename;
+    /*
+     * Cloudinary upload endpoint.
+     */
 
-    var content =
-      await fileToBase64(processedFile);
+    var uploadURL =
+      'https://api.cloudinary.com/v1_1/' +
+      CLOUDINARY_CLOUD_NAME +
+      '/image/upload';
+
+    /*
+     * FormData
+     */
+
+    var formData =
+      new FormData();
+
+    formData.append(
+      'file',
+      processedFile
+    );
+
+    formData.append(
+      'upload_preset',
+      CLOUDINARY_UPLOAD_PRESET
+    );
+
+    /*
+     * Store images under:
+     *
+     * blog/
+     */
+
+    formData.append(
+      'folder',
+      'blog'
+    );
+
+    /*
+     * Use generated filename.
+     */
+
+    formData.append(
+      'public_id',
+      filename.replace(
+        /\.[^.]+$/,
+        ''
+      )
+    );
+
+    /*
+     * Upload
+     */
 
     var response =
       await fetch(
-        'https://api.github.com/repos/' +
-        GITHUB_OWNER +
-        '/' +
-        GITHUB_REPO +
-        '/contents/' +
-        path,
+        uploadURL,
         {
-          method: 'PUT',
-
-          headers: {
-            'Authorization':
-              'Bearer ' + token,
-
-            'Accept':
-              'application/vnd.github+json',
-
-            'Content-Type':
-              'application/json',
-
-            'X-GitHub-Api-Version':
-              '2022-11-28'
-          },
-
-          body: JSON.stringify({
-            message:
-              'Upload image: ' + filename,
-
-            content:
-              content,
-
-            branch:
-              GITHUB_BRANCH
-          })
+          method: 'POST',
+          body: formData
         }
       );
 
     var result =
       await response.json();
 
-    if (!response.ok) {
+    /*
+     * Error handling
+     */
 
+    if (!response.ok) {
       console.error(
-        'GitHub API error:',
+        'Cloudinary upload error:',
         result
       );
 
       throw new Error(
-        result.message ||
-        'GitHub 图片上传失败。'
+        result.error &&
+        result.error.message
+          ? result.error.message
+          : 'Cloudinary 图片上传失败。'
+      );
+    }
+
+    /*
+     * Cloudinary returns:
+     *
+     * secure_url
+     */
+
+    if (!result.secure_url) {
+      console.error(
+        'Unexpected Cloudinary response:',
+        result
+      );
+
+      throw new Error(
+        'Cloudinary 没有返回图片 URL。'
       );
     }
 
     return {
       url:
-        '/images/uploads/' + filename,
+        result.secure_url,
 
       filename:
         filename,
 
-      path:
-        path
+      public_id:
+        result.public_id
     };
   }
 
-
   /*
+   * ============================================================
    * Upload multiple files
+   * ============================================================
    */
-  async function uploadImages(files, editor) {
 
+  async function uploadImages(files, editor) {
     if (!files || !files.length) {
       return;
     }
@@ -473,12 +482,13 @@
       i < files.length;
       i++
     ) {
-
-      var file = files[i];
+      var file =
+        files[i];
 
       /*
        * Only images.
        */
+
       if (
         !file.type ||
         file.type.indexOf('image/') !== 0
@@ -487,27 +497,32 @@
       }
 
       try {
-
         console.log(
-          'Uploading image:',
+          'Uploading image to Cloudinary:',
           file.name
         );
 
         var result =
-          await uploadImageToGitHub(file);
+          await uploadImageToCloudinary(
+            file
+          );
 
-        uploaded.push(result);
+        uploaded.push(
+          result
+        );
 
         /*
          * Insert Markdown into Vditor.
          */
+
         editor.insertValue(
           '\n\n' +
           '![' +
           file.name +
           '](' +
           result.url +
-          ')\n\n'
+          ')' +
+          '\n\n'
         );
 
         console.log(
@@ -516,7 +531,6 @@
         );
 
       } catch (error) {
-
         console.error(
           'Image upload failed:',
           error
@@ -524,7 +538,10 @@
 
         alert(
           '图片上传失败：\n\n' +
-          (error.message || error)
+          (
+            error.message ||
+            error
+          )
         );
       }
     }
@@ -532,12 +549,13 @@
     return uploaded;
   }
 
-
   /*
+   * ============================================================
    * Register Decap widget
+   * ============================================================
    */
-  function registerWidget() {
 
+  function registerWidget() {
     var createClass =
       window.createClass;
 
@@ -548,7 +566,6 @@
       !createClass ||
       !h
     ) {
-
       console.error(
         'Decap CMS React helpers are unavailable.'
       );
@@ -556,30 +573,28 @@
       return;
     }
 
-
     /*
+     * ==========================================================
      * Vditor Control
+     * ==========================================================
      */
+
     var VditorControl =
       createClass({
-
         getInitialState:
           function () {
-
             return {
-              initialized: false
+              initialized:
+                false
             };
-
           },
-
 
         componentDidMount:
           function () {
-
-            var self = this;
+            var self =
+              this;
 
             if (!window.Vditor) {
-
               console.error(
                 'Vditor is unavailable.'
               );
@@ -590,13 +605,10 @@
             var initialValue =
               this.props.value || '';
 
-
             self.editor =
               new window.Vditor(
                 self.container,
-
                 {
-
                   value:
                     initialValue,
 
@@ -611,64 +623,45 @@
                       false
                   },
 
-
                   toolbar: [
-
                     'headings',
-
                     'bold',
-
                     'italic',
-
                     'strike',
 
                     '|',
 
                     'line',
-
                     'quote',
-
                     'list',
-
                     'ordered-list',
-
                     'check',
 
                     '|',
 
                     'code',
-
                     'inline-code',
-
                     'link',
-
                     'table',
 
                     '|',
 
                     'upload',
-
                     'emoji',
 
                     '|',
 
                     'undo',
-
                     'redo',
 
                     '|',
 
                     'fullscreen',
-
                     'edit-mode',
-
                     'preview'
-
                   ],
 
-
                   preview: {
-
                     mode:
                       'both',
 
@@ -684,32 +677,33 @@
                       inlineDigit:
                         true
                     }
-
                   },
-
 
                   counter: {
                     enable:
                       false
                   },
 
-
                   resize: {
                     enable:
                       true
                   },
 
+                  /*
+                   * =================================================
+                   * Cloudinary image upload
+                   * =================================================
+                   */
 
                   upload: {
-
                     accept:
                       'image/*',
 
-                    max: 20 * 1024 * 1024,
+                    max:
+                      20 * 1024 * 1024,
 
                     handler:
                       function (files) {
-
                         uploadImages(
                           files,
                           self.editor
@@ -719,10 +713,8 @@
                       }
                   },
 
-
                   after:
                     function () {
-
                       self.setState({
                         initialized:
                           true
@@ -732,42 +724,34 @@
                        * Make sure Vditor
                        * contains current Decap value.
                        */
+
                       if (
                         self.editor &&
                         initialValue
                       ) {
-
                         self.editor.setValue(
                           initialValue
                         );
-
                       }
-
                     },
-
 
                   input:
                     function (value) {
-
                       /*
                        * Send Markdown
                        * back to Decap.
                        */
+
                       self.props.onChange(
                         value
                       );
-
                     }
-
                 }
               );
-
           },
-
 
         componentDidUpdate:
           function (prevProps) {
-
             if (!this.editor) {
               return;
             }
@@ -781,50 +765,35 @@
             if (
               oldValue !== newValue
             ) {
-
               var currentValue =
                 this.editor.getValue();
 
               if (
                 currentValue !== newValue
               ) {
-
                 this.editor.setValue(
                   newValue
                 );
-
               }
-
             }
-
           },
-
 
         componentWillUnmount:
           function () {
-
             if (this.editor) {
-
               this.editor.destroy();
-
               this.editor = null;
-
             }
-
           },
-
 
         render:
           function () {
-
-            var self = this;
+            var self =
+              this;
 
             return h(
-
               'div',
-
               {
-
                 className:
                   this.props.classNameWrapper,
 
@@ -832,21 +801,15 @@
                   width:
                     '100%'
                 }
-
               },
 
               h(
-
                 'div',
-
                 {
-
                   ref:
                     function (element) {
-
                       self.container =
                         element;
-
                     },
 
                   id:
@@ -856,36 +819,28 @@
                     width:
                       '100%'
                   }
-
                 }
-
               )
-
             );
-
           }
-
       });
 
-
     /*
-     * Decap preview
+     * ============================================================
+     * Vditor preview
+     * ============================================================
      */
+
     var VditorPreview =
       createClass({
-
         render:
           function () {
-
             var value =
               this.props.value || '';
 
             return h(
-
               'div',
-
               {
-
                 style: {
                   padding:
                     '20px',
@@ -896,36 +851,449 @@
                   fontFamily:
                     'monospace'
                 }
-
               },
 
               value
-
             );
-
           }
-
       });
 
+    /*
+     * ============================================================
+     * Cloudinary Cover Image Control
+     * ============================================================
+     */
+
+    var CloudinaryImageControl =
+      createClass({
+        getInitialState:
+          function () {
+            return {
+              uploading:
+                false
+            };
+          },
+
+        handleSelect:
+          async function (event) {
+            var self =
+              this;
+
+            var files =
+              event.target.files;
+
+            if (
+              !files ||
+              !files.length
+            ) {
+              return;
+            }
+
+            var file =
+              files[0];
+
+            /*
+             * Only images.
+             */
+
+            if (
+              !file.type ||
+              file.type.indexOf('image/') !== 0
+            ) {
+              alert(
+                '请选择图片文件。'
+              );
+
+              event.target.value = '';
+
+              return;
+            }
+
+            try {
+              self.setState({
+                uploading:
+                  true
+              });
+
+              console.log(
+                'Uploading cover image:',
+                file.name
+              );
+
+              var result =
+                await uploadImageToCloudinary(
+                  file
+                );
+
+              /*
+               * Save Cloudinary URL
+               * into Decap field.
+               */
+
+              self.props.onChange(
+                result.url
+              );
+
+              console.log(
+                'Cover image uploaded:',
+                result.url
+              );
+
+            } catch (error) {
+              console.error(
+                'Cover upload failed:',
+                error
+              );
+
+              alert(
+                '封面上传失败：\n\n' +
+                (
+                  error.message ||
+                  error
+                )
+              );
+
+            } finally {
+              self.setState({
+                uploading:
+                  false
+              });
+
+              /*
+               * Allow selecting
+               * the same file again.
+               */
+
+              event.target.value = '';
+            }
+          },
+
+        handleRemove:
+          function () {
+            this.props.onChange('');
+          },
+
+        render:
+          function () {
+            var self =
+              this;
+
+            var value =
+              this.props.value || '';
+
+            return h(
+              'div',
+              {
+                style: {
+                  width:
+                    '100%'
+                }
+              },
+
+              /*
+               * =================================================
+               * Image preview
+               * =================================================
+               */
+
+              value
+                ? h(
+                    'div',
+                    {
+                      style: {
+                        marginBottom:
+                          '16px'
+                      }
+                    },
+
+                    h(
+                      'img',
+                      {
+                        src:
+                          value,
+
+                        alt:
+                          '封面图',
+
+                        style: {
+                          display:
+                            'block',
+
+                          width:
+                            '100%',
+
+                          maxWidth:
+                            '600px',
+
+                          maxHeight:
+                            '400px',
+
+                          objectFit:
+                            'cover',
+
+                          borderRadius:
+                            '8px',
+
+                          border:
+                            '1px solid #e5e7eb'
+                        }
+                      }
+                    ),
+
+                    h(
+                      'div',
+                      {
+                        style: {
+                          marginTop:
+                            '8px',
+
+                          fontSize:
+                            '12px',
+
+                          color:
+                            '#666',
+
+                          wordBreak:
+                            'break-all'
+                        }
+                      },
+
+                      value
+                    )
+                  )
+
+                : h(
+                    'div',
+                    {
+                      style: {
+                        width:
+                          '100%',
+
+                        maxWidth:
+                          '600px',
+
+                        height:
+                          '180px',
+
+                        display:
+                          'flex',
+
+                        alignItems:
+                          'center',
+
+                        justifyContent:
+                          'center',
+
+                        border:
+                          '1px dashed #d1d5db',
+
+                        borderRadius:
+                          '8px',
+
+                        marginBottom:
+                          '12px',
+
+                        color:
+                          '#9ca3af',
+
+                        background:
+                          '#f9fafb'
+                      }
+                    },
+
+                    '暂无封面图'
+                  ),
+
+              /*
+               * =================================================
+               * Upload input
+               * =================================================
+               */
+
+              h(
+                'input',
+                {
+                  type:
+                    'file',
+
+                  accept:
+                    'image/*',
+
+                  disabled:
+                    self.state.uploading,
+
+                  onChange:
+                    function (event) {
+                      self.handleSelect(
+                        event
+                      );
+                    }
+                }
+              ),
+
+              /*
+               * =================================================
+               * Upload status
+               * =================================================
+               */
+
+              self.state.uploading
+                ? h(
+                    'div',
+                    {
+                      style: {
+                        marginTop:
+                          '10px',
+
+                        color:
+                          '#2563eb'
+                      }
+                    },
+
+                    '正在上传到 Cloudinary，请稍候……'
+                  )
+
+                : null,
+
+              /*
+               * =================================================
+               * Remove button
+               * =================================================
+               */
+
+              value &&
+              !self.state.uploading
+                ? h(
+                    'button',
+                    {
+                      type:
+                        'button',
+
+                      onClick:
+                        function () {
+                          self.handleRemove();
+                        },
+
+                      style: {
+                        marginTop:
+                          '12px',
+
+                        padding:
+                          '6px 12px',
+
+                        border:
+                          '1px solid #d1d5db',
+
+                        borderRadius:
+                          '6px',
+
+                        background:
+                          '#fff',
+
+                        cursor:
+                          'pointer'
+                      }
+                    },
+
+                    '删除封面'
+                  )
+
+                : null
+            );
+          }
+      });
 
     /*
-     * Register widget
+     * ============================================================
+     * Cloudinary Cover Image Preview
+     * ============================================================
      */
+
+    var CloudinaryImagePreview =
+      createClass({
+        render:
+          function () {
+            var value =
+              this.props.value || '';
+
+            if (!value) {
+              return h(
+                'div',
+                null,
+                '暂无封面'
+              );
+            }
+
+            return h(
+              'div',
+              {
+                style: {
+                  padding:
+                    '20px'
+                }
+              },
+
+              h(
+                'img',
+                {
+                  src:
+                    value,
+
+                  alt:
+                    '封面图',
+
+                  style: {
+                    display:
+                      'block',
+
+                    width:
+                      '100%',
+
+                    maxWidth:
+                      '800px',
+
+                    maxHeight:
+                      '500px',
+
+                    objectFit:
+                      'cover',
+
+                    borderRadius:
+                      '8px'
+                  }
+                }
+              )
+            );
+          }
+      });
+
+    /*
+     * ============================================================
+     * Register Vditor widget
+     * ============================================================
+     */
+
     CMS.registerWidget(
-
       'vditor',
-
       VditorControl,
-
       VditorPreview
-
     );
 
+    /*
+     * ============================================================
+     * Register Cloudinary cover image widget
+     * ============================================================
+     */
+
+    CMS.registerWidget(
+      'cloudinary-image',
+      CloudinaryImageControl,
+      CloudinaryImagePreview
+    );
 
     console.log(
-      'Vditor widget registered with GitHub image upload.'
+      'Vditor + Cloudinary image widgets registered.'
     );
-
   }
 
 })();
