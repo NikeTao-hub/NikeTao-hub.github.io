@@ -9,8 +9,11 @@ backend:
 locale: zh_Hans
 publish_mode: editorial_workflow
 
-# media_folder: "static/images/uploads"
-# public_folder: "/images/uploads"
+# Decap CMS requires this field.
+# New images are NOT uploaded here.
+# Vditor and cloudinary-image upload directly to Cloudinary.
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: posts
