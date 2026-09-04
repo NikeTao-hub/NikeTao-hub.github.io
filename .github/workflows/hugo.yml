@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -45,27 +44,15 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        run: hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
-
-      - name: Check images
         run: |
-          echo "===== SOURCE ====="
+          hugo --gc --minify --baseURL "https://niketao.com/blog/"
 
-          if [ -d "static/images/uploads" ]; then
-            find static/images/uploads -maxdepth 1 -type f -print
-          else
-            echo "static/images/uploads does not exist"
-            echo "No source images found."
-          fi
+          echo "===== Hugo build completed ====="
+          ls -la public
 
-          echo "===== PUBLIC ====="
-
-          if [ -d "public/images/uploads" ]; then
-            find public/images/uploads -maxdepth 1 -type f -print
-          else
-            echo "public/images/uploads does not exist"
-            echo "No generated images found."
-          fi
+          mv public public-root
+          mkdir public
+          mv public-root public/blog
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -76,9 +63,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
-
     needs: build
 
     steps:
