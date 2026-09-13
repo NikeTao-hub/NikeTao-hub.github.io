@@ -7,7 +7,6 @@ backend:
   site_domain: niketao.com
 
 locale: zh_Hans
-publish_mode: editorial_workflow
 
 # Decap CMS requires this field.
 # New images are NOT uploaded here.
