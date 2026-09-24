@@ -1,0 +1,26 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.framework.startCommand": "hugo server --buildDrafts --buildFuture --bind 127.0.0.1 --baseURL http://localhost:1313/blog/ --environment development",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.content.pageFolders": [{ "title": "博客文章", "path": "[[workspace]]/content/post" }],
+  "frontMatter.preview.host": "http://localhost:1313/blog",
+  "frontMatter.site.baseURL": "https://niketao.com/blog/",
+  "frontMatter.taxonomy.alignFilename": false,
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "fields": [
+        { "title": "标题", "name": "title", "type": "string", "single": true, "required": true },
+        { "title": "日期", "name": "date", "type": "datetime", "default": "{{now}}", "isPublishDate": true },
+        { "title": "简介", "name": "description", "type": "string" },
+        { "title": "分类", "name": "categories", "type": "choice", "choices": ["科研", "生活", "技术"], "default": "科研", "required": true },
+        { "title": "标签", "name": "tags", "type": "tags" },
+        { "title": "封面图片 URL", "name": "image", "type": "string", "single": true },
+        { "title": "显示目录", "name": "toc", "type": "boolean", "default": true },
+        { "title": "草稿（开启时不发布）", "name": "draft", "type": "draft", "default": true }
+      ]
+    }
+  ]
+}

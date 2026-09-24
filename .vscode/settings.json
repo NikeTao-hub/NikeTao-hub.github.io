@@ -1,0 +1,14 @@
+{
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.quickSuggestions": false,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 26,
+    "editor.wordWrapColumn": 64,
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false
+  },
+  "files.exclude": { "public": true, "resources/_gen": true },
+  "search.exclude": { "public": true, "resources": true, "static/admin-old": true, "static/admin-react-backup": true },
+  "files.insertFinalNewline": true
+}

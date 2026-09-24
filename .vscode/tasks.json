@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "博客：新建文章",
+      "type": "process",
+      "command": "node",
+      "args": ["scripts/blog.mjs", "new", "${input:title}", "${input:category}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "博客：本地预览（含草稿）",
+      "type": "process",
+      "command": "hugo",
+      "args": ["server", "--buildDrafts", "--buildFuture", "--bind", "127.0.0.1", "--baseURL", "http://localhost:1313/blog/", "--environment", "development"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "博客：发布前构建检查",
+      "type": "process",
+      "command": "hugo",
+      "args": ["--gc", "--minify", "--environment", "production"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "博客：上传图片到 Cloudinary",
+      "type": "process",
+      "command": "node",
+      "args": ["scripts/blog.mjs", "upload", "${input:imagePath}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    { "id": "title", "type": "promptString", "description": "文章标题" },
+    { "id": "category", "type": "pickString", "description": "文章分类", "options": ["科研", "生活", "技术"], "default": "科研" },
+    { "id": "imagePath", "type": "promptString", "description": "图片文件的完整路径（可拖入终端后复制路径，不需要引号）" }
+  ]
+}
