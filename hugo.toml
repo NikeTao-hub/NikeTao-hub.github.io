@@ -19,6 +19,14 @@ theme = "hugo-theme-stack"
 [params.article]
 
     math = true
+
+# Only the collection script is public. Analytics results require an Umami login.
+# Never configure an Umami public share URL or an API token here.
+[params.analytics]
+    enabled = true
+    scriptURL = "https://cloud.umami.is/script.js"
+    websiteID = "0ed6de5e-903e-4b41-a556-958a29175f14"
+    dashboardURL = "https://cloud.umami.is/analytics/us/websites"
     
 [taxonomies]
 

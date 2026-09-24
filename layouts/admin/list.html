@@ -3,9 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nike Tao Blog Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Nike Tao CMS</title>
+    <style>
+      body { margin: 0; }
+      .admin-tools { position: fixed; bottom: 16px; right: 16px; z-index: 1000; padding: 10px 14px; border-radius: 8px; background: #fff; box-shadow: 0 2px 12px #0002; font: 14px system-ui, sans-serif; }
+      .admin-tools a { color: #245b85; text-decoration: none; }
+      .admin-tools span { color: #666; }
+    </style>
 </head>
 <body>
-    <script src="/admin/decap-cms.js"></script>
+    <div id="nc-root"></div>
+    <aside class="admin-tools" aria-label="管理工具">
+      {{- with .Site.Params.analytics.dashboardURL -}}
+        {{- $url := urls.Parse . -}}
+        {{- if or (ne $url.Scheme "https") (not $url.Host) (findRE `(?i)/share(d)?(/|$)` $url.Path) -}}
+          {{- errorf "Analytics dashboardURL must be an HTTPS login-protected dashboard, never a public share URL." -}}
+        {{- end -}}
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">访问统计 · 需登录 ↗</a>
+      {{- else -}}
+        <span>访问统计尚未连接</span>
+      {{- end -}}
+    </aside>
+    <script src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
+    <script src="{{ "admin/vditor-widget.js" | relURL }}"></script>
 </body>
 </html>

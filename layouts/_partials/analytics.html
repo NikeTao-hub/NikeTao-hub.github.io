@@ -1,0 +1,12 @@
+{{- $analytics := .Site.Params.analytics -}}
+{{- if and $analytics.enabled hugo.IsProduction (not hugo.IsServer) -}}
+    {{- $script := urls.Parse $analytics.scriptURL -}}
+    {{- if or (ne $script.Scheme "https") (not $script.Host) -}}
+        {{- errorf "Analytics enabled: params.analytics.scriptURL must be an HTTPS URL." -}}
+    {{- end -}}
+    {{- if not (findRE `^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$` $analytics.websiteID) -}}
+        {{- errorf "Analytics enabled: params.analytics.websiteID must be the Umami website UUID." -}}
+    {{- end -}}
+    {{- $domain := (urls.Parse .Site.BaseURL).Hostname -}}
+    <script defer src="{{ $analytics.scriptURL }}" data-website-id="{{ $analytics.websiteID }}" data-domains="{{ $domain }}" data-do-not-track="true" data-exclude-search="true" data-exclude-hash="true"></script>
+{{- end -}}
