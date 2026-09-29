@@ -39,11 +39,11 @@ collections:
         hint: "用于文章列表和页面摘要，建议 50～100 字"
 
       - name: draft
-        label: 草稿
+        label: 保存为草稿（开启后不公开）
         widget: boolean
-        default: true
+        default: false
         required: false
-        hint: "开启时不会出现在博客；正式发布前请关闭。已有文章未设置此字段时仍正常发布。"
+        hint: "默认关闭：保存并部署后公开。只有暂不发布时才开启；草稿即使 Actions 成功也不会出现在博客。"
 
       - name: categories
         label: 分类
