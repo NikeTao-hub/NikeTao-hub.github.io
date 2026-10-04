@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Nike Tao 的个人主页：研究、技术、写作与生活。">
     <meta name="theme-color" content="#f6f7f8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data: https://res.cloudinary.com; connect-src 'self'; base-uri 'self'; form-action 'self'">
     <title>Nike Tao — Personal Homepage</title>
     <link rel="icon" href="/blog/favicon.jpg">
     <link rel="stylesheet" href="/styles.css">
@@ -59,7 +59,7 @@
 
       <div class="site-shell">
         <section id="now" class="panel currently reveal" aria-labelledby="currently-title">
-          <div class="panel-heading"><div class="heading-group"><h2 id="currently-title">Currently</h2><span class="updated"><i></i> Updated this week</span></div><a href="#now">/ now <svg><use href="#icon-arrow"/></svg></a></div>
+          <div class="panel-heading"><div class="heading-group"><h2 id="currently-title">Currently</h2><span class="updated"><i></i> <span id="currently-updated">Updated this week</span></span></div><a href="#now">/ now <svg><use href="#icon-arrow"/></svg></a></div>
           <div class="currently-grid">
             <article><span class="icon-tile"><svg><use href="#icon-laptop"/></svg></span><div><p>Building</p><strong>niketao.com v2</strong><span>让想法更好地被记录和连接</span></div></article>
             <article><span class="icon-tile"><svg><use href="#icon-book"/></svg></span><div><p>Reading</p><strong>《深度工作》</strong><span>专注地做有价值的事</span></div></article>
@@ -84,9 +84,9 @@
         </div>
 
         <section id="links" class="info-grid reveal" aria-label="更多信息">
-          <article class="mini-card book-card"><h3>Books</h3><small>Currently reading</small><div class="book-content"><div class="book-cover"><b>深度<br>工作</b><span>DEEP WORK</span></div><div><strong>深度工作</strong><span>Cal Newport</span><div class="progress"><i></i></div><em>60%</em></div></div></article>
-          <article class="mini-card music-card"><h3>Music</h3><small>Recently played</small><div class="music-content"><img src="/assets/moon.jpg" alt="A Moment Apart 专辑视觉" width="1400" height="1120" loading="lazy"><div><strong>A Moment Apart</strong><span>ODESZA</span><div class="player"><button aria-label="播放"><svg><use href="#icon-play"/></svg></button><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></article>
-          <article class="mini-card stats-card"><h3>Stats</h3><small>Since 2023.06</small><div class="stats-list"><span><svg><use href="#icon-note"/></svg>写了 <strong id="post-count">—</strong> 篇文章</span><span><svg><use href="#icon-clock"/></svg>持续记录与探索</span><span><svg><use href="#icon-book"/></svg>读了 24 本书</span><span><svg><use href="#icon-camera"/></svg>拍了 1,200+ 张照片</span></div></article>
+          <article class="mini-card book-card"><h3>Books</h3><small>Currently reading</small><div class="book-content"><div class="book-cover"><b id="book-cover-title">深度<br>工作</b><span>DEEP WORK</span></div><div><strong id="book-title">深度工作</strong><span id="book-author">Cal Newport</span><div class="progress"><i id="book-progress-bar"></i></div><em id="book-progress">60%</em></div></div></article>
+          <article class="mini-card music-card"><h3>Music</h3><small>Recently played</small><div class="music-content"><img id="music-cover" src="/assets/moon.jpg" alt="A Moment Apart 专辑视觉" width="1400" height="1120" loading="lazy"><div><strong id="music-title">A Moment Apart</strong><span id="music-artist">ODESZA</span><div class="player"><button aria-label="播放"><svg><use href="#icon-play"/></svg></button><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></article>
+          <article class="mini-card stats-card"><h3>Stats</h3><small id="stats-since">Since 2023.06</small><div class="stats-list"><span><svg><use href="#icon-note"/></svg>写了 <strong id="post-count">—</strong> 篇文章</span><span><svg><use href="#icon-clock"/></svg><span id="stats-status">持续记录与探索</span></span><span><svg><use href="#icon-book"/></svg>读了 <strong id="stats-books">24</strong> 本书</span><span><svg><use href="#icon-camera"/></svg>拍了 <strong id="stats-photos">1,200+</strong> 张照片</span></div></article>
           <article class="mini-card random-card"><h3>Random</h3><small>发现一个随机内容</small><svg class="dice"><use href="#icon-dice"/></svg><button id="random-post" type="button">来点惊喜吧！ <svg><use href="#icon-arrow"/></svg></button><p>随机一篇文章 / 一张照片 / 一个项目</p></article>
         </section>
       </div>

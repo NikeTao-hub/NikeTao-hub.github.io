@@ -15,6 +15,90 @@ media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  - name: homepage
+    label: 主页
+    files:
+      - name: content
+        label: 主页内容
+        file: homepage/content.json
+        format: json
+        fields:
+          - name: hero
+            label: 首屏介绍
+            widget: object
+            fields:
+              - { name: name, label: 姓名, widget: string }
+              - { name: tagline, label: 英文介绍, widget: text, hint: "换行会原样显示" }
+              - { name: intro, label: 中文介绍, widget: text, hint: "换行会原样显示" }
+              - { name: note, label: 手写标语, widget: text, hint: "换行会原样显示" }
+              - { name: location, label: 位置文字, widget: text, hint: "换行会原样显示" }
+              - { name: image, label: 首屏背景图, widget: cloudinary-image }
+
+          - { name: currentlyUpdated, label: Currently 更新时间, widget: string }
+
+          - name: currently
+            label: Currently 状态
+            widget: list
+            min: 5
+            max: 5
+            collapsed: true
+            summary: "{{fields.label}} · {{fields.title}}"
+            fields:
+              - { name: label, label: 类型, widget: string }
+              - { name: title, label: 标题, widget: string }
+              - { name: description, label: 说明, widget: string }
+
+          - name: projects
+            label: 精选项目
+            widget: list
+            min: 1
+            max: 3
+            collapsed: true
+            summary: "{{fields.type}} · {{fields.title}}"
+            fields:
+              - { name: type, label: 类型, widget: string }
+              - { name: title, label: 项目名称, widget: string }
+              - { name: description, label: 项目说明, widget: text }
+              - { name: url, label: 链接, widget: string }
+              - { name: image, label: 项目图片, widget: cloudinary-image }
+
+          - name: photos
+            label: 照片墙
+            widget: list
+            min: 1
+            max: 6
+            collapsed: true
+            summary: "{{fields.alt}}"
+            fields:
+              - { name: image, label: 图片, widget: cloudinary-image }
+              - { name: alt, label: 图片说明, widget: string }
+
+          - name: book
+            label: 正在阅读
+            widget: object
+            fields:
+              - { name: title, label: 书名, widget: string }
+              - { name: coverTitle, label: 封面文字, widget: text, hint: "支持换行" }
+              - { name: author, label: 作者, widget: string }
+              - { name: progress, label: 阅读进度, widget: number, min: 0, max: 100, value_type: int }
+
+          - name: music
+            label: 最近音乐
+            widget: object
+            fields:
+              - { name: title, label: 曲目, widget: string }
+              - { name: artist, label: 艺术家, widget: string }
+              - { name: cover, label: 封面, widget: cloudinary-image }
+
+          - name: stats
+            label: 统计信息
+            widget: object
+            fields:
+              - { name: since, label: 开始时间, widget: string }
+              - { name: status, label: 当前状态, widget: string }
+              - { name: books, label: 已读书籍数, widget: string }
+              - { name: photos, label: 照片数量, widget: string }
+
   - name: posts
     label: 文章
     folder: content/post
