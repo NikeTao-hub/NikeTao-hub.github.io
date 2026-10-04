@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Nike Tao 的个人主页：研究、技术、写作与生活。">
+    <meta name="theme-color" content="#f5f6f8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
+    <title>Nike Tao — Personal Homepage</title>
+    <link rel="icon" href="/blog/favicon.jpg">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Nike Tao 首页">niketao<span>.</span></a>
+      <nav class="desktop-nav" aria-label="主导航">
+        <a class="is-active" href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="/blog/">Blog</a>
+        <a href="#now">Now</a>
+        <a href="#photos">Photos</a>
+        <a href="#links">Links</a>
+      </nav>
+      <a class="contact-link" href="https://github.com/niketao-hub" target="_blank" rel="noreferrer">GitHub</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="移动端导航" hidden>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="/blog/">Blog</a>
+        <a href="#now">Now</a>
+        <a href="#photos">Photos</a>
+      </nav>
+    </header>
+
+    <main id="home" class="site-shell">
+      <section id="about" class="hero" aria-labelledby="hero-title">
+        <img class="hero-photo" src="/assets/hero.jpg" alt="Nike Tao 在金色银杏树下拍照" width="1200" height="1800" fetchpriority="high">
+        <div class="hero-wash" aria-hidden="true"></div>
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Research · Technology · Life</p>
+          <h1 id="hero-title">Nike Tao</h1>
+          <p class="hero-tagline">I build things, explore ideas,<br>and document the journey.</p>
+          <p class="hero-intro">一个喜欢折腾的普通人，研究一些有趣的问题，写代码，也记录生活。希望在不断探索中，成为更有意思的人。</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#now">About Me</a>
+            <a class="button button-light" href="#projects">View My Work</a>
+          </div>
+          <div class="social-links" aria-label="社交链接">
+            <a href="https://github.com/niketao-hub" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+            <a href="/blog/" aria-label="博客">B</a>
+            <a href="/blog/index.xml" aria-label="RSS">RSS</a>
+          </div>
+        </div>
+        <p class="hero-note" aria-hidden="true">Good ideas.<br>Better life.<br>Keep exploring.</p>
+        <p class="hero-location">Wuhan, China<br>Somewhere on Earth</p>
+      </section>
+
+      <section id="now" class="panel currently reveal" aria-labelledby="currently-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="currently-title">Currently</h2>
+            <span class="updated"><i aria-hidden="true"></i> Updated this week</span>
+          </div>
+          <a href="#now">/ now</a>
+        </div>
+        <div class="currently-grid">
+          <article>
+            <span class="icon-tile" aria-hidden="true">⌨</span>
+            <div><p>Building</p><strong>niketao.com v2</strong><span>让想法更好地被记录和连接</span></div>
+          </article>
+          <article>
+            <span class="icon-tile" aria-hidden="true">◎</span>
+            <div><p>Researching</p><strong>Atmosphere & Data</strong><span>理解大气与复杂系统</span></div>
+          </article>
+          <article>
+            <span class="icon-tile" aria-hidden="true">✎</span>
+            <div><p>Writing</p><strong>Research · Tech · Life</strong><span>记录正在发生的思考</span></div>
+          </article>
+          <article>
+            <span class="icon-tile" aria-hidden="true">◌</span>
+            <div><p>Moving</p><strong>Cycling & Training</strong><span>保持身体和思维流动</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="panel reveal" aria-labelledby="projects-title">
+        <div class="panel-heading">
+          <h2 id="projects-title">Featured Projects</h2>
+          <a href="#projects">Selected work</a>
+        </div>
+        <div class="project-grid">
+          <a class="project-card" href="/">
+            <div class="project-image"><img src="/assets/workspace.jpg" alt="笔记本电脑与咖啡" width="1400" height="1050" loading="lazy"></div>
+            <p><span>Web</span><time>2026</time></p>
+            <h3>niketao.com</h3>
+            <small>个人主页，一个记录想法、项目与生活的数字角落。</small>
+          </a>
+          <a class="project-card" href="/blog/">
+            <div class="project-image project-image-dark"><img src="/assets/moon.jpg" alt="月亮轨迹摄影" width="1400" height="1120" loading="lazy"></div>
+            <p><span>Writing</span><time>Ongoing</time></p>
+            <h3>Personal Blog</h3>
+            <small>研究、技术与生活的长期写作档案。</small>
+          </a>
+          <a class="project-card" href="/blog/categories/%E7%A7%91%E7%A0%94/">
+            <div class="project-image"><img src="/assets/hero.jpg" alt="Nike Tao 手持相机" width="1200" height="1800" loading="lazy"></div>
+            <p><span>Research</span><time>Notes</time></p>
+            <h3>Research Notes</h3>
+            <small>关于大气、数据与科研过程的持续记录。</small>
+          </a>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <section id="writing" class="panel reveal" aria-labelledby="writing-title">
+          <div class="panel-heading">
+            <h2 id="writing-title">Latest Writing</h2>
+            <a href="/blog/">All posts</a>
+          </div>
+          <div id="writing-list" class="writing-list" aria-live="polite">
+            <a class="writing-row" href="/blog/">
+              <img src="/assets/workspace.jpg" alt="" width="1400" height="1050">
+              <span><strong>正在读取最新文章…</strong><small>Blog archive</small></span>
+            </a>
+          </div>
+        </section>
+
+        <section id="photos" class="panel reveal" aria-labelledby="photos-title">
+          <div class="panel-heading">
+            <h2 id="photos-title">Life in Frames</h2>
+            <span>Recent moments</span>
+          </div>
+          <div class="photo-grid">
+            <figure class="photo-wide"><img src="/assets/hero.jpg" alt="金色银杏树下的拍摄时刻" width="1200" height="1800" loading="lazy"></figure>
+            <figure><img src="/assets/moon.jpg" alt="夜空中的月亮轨迹" width="1400" height="1120" loading="lazy"></figure>
+            <figure><img src="/assets/workspace.jpg" alt="咖啡与笔记本电脑" width="1400" height="1050" loading="lazy"></figure>
+            <figure><img src="/assets/training.jpg" alt="健身房训练空间" width="1400" height="1050" loading="lazy"></figure>
+            <figure><img src="/assets/life.jpg" alt="手中的石榴" width="1050" height="1400" loading="lazy"></figure>
+          </div>
+        </section>
+      </div>
+
+      <section id="links" class="info-grid reveal" aria-label="更多信息">
+        <article class="mini-card">
+          <p>Uses</p>
+          <small>Current stack</small>
+          <div class="stack-list"><span>Hugo</span><span>GitHub Pages</span><span>Decap CMS</span></div>
+        </article>
+        <article class="mini-card">
+          <p>Stats</p>
+          <small>Growing archive</small>
+          <div class="stats-list"><span><strong id="post-count">—</strong> 篇文章</span><span><strong>3</strong> 个主题</span><span><strong>1</strong> 个独立域名</span></div>
+        </article>
+        <article class="mini-card random-card">
+          <p>Random</p>
+          <small>发现一个随机内容</small>
+          <span class="dice" aria-hidden="true">⚄</span>
+          <button id="random-post" type="button">随便读一篇</button>
+        </article>
+        <article class="mini-card">
+          <p>Elsewhere</p>
+          <small>Find me online</small>
+          <div class="elsewhere-links"><a href="https://github.com/niketao-hub" target="_blank" rel="noreferrer">GitHub</a><a href="/blog/">Blog</a><a href="/blog/index.xml">RSS</a></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> Nike Tao</p>
+      <p>Research · Technology · Life</p>
+    </footer>
+  </body>
+</html>

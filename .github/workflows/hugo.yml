@@ -53,6 +53,10 @@ jobs:
           mv public public-root
           mkdir public
           mv public-root public/blog
+          cp -R homepage/. public/
+
+          test -f public/index.html
+          test -f public/blog/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
