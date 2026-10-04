@@ -10,6 +10,8 @@
 
 主页后台的数据保存在 `homepage/content.json`。页面加载失败时，`homepage/index.html` 中的默认内容仍会正常显示。
 
+音乐卡的播放按钮会播放「最近音乐」中的音频直链。音频必须是浏览器可以直接访问的 HTTPS 地址；点击按钮可以播放或暂停。Random 卡片的按钮会直接打开博客管理后台。
+
 ## 更新博客与 Latest Writing
 
 在后台进入「文章」并发布新文章。首页的 Latest Writing 会自动读取 `/blog/index.xml`，展示最新三篇文章的标题、摘要、日期、链接和封面图。

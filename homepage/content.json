@@ -93,7 +93,8 @@
   "music": {
     "title": "哪里是你的拥抱",
     "artist": "逃跑计划",
-    "cover": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791105035/blog/20261004-171034-166-WechatIMG375.jpg"
+    "cover": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791105035/blog/20261004-171034-166-WechatIMG375.jpg",
+    "audio": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b9/4f/2c/b94f2c01-ab38-2af2-2851-f78b53ae9dff/mzaf_272973440447802946.plus.aac.p.m4a"
   },
   "stats": {
     "since": "Since 2026.10",

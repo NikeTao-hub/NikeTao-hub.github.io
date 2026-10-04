@@ -122,20 +122,30 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-linecap:
 .music-content img { width: 64px; height: 84px; border-radius: 5px; object-fit: cover; }
 .player { display: flex; align-items: center; gap: 3px; margin-top: 19px; }
 .player button { flex: 0 0 auto; width: 30px; height: 30px; display: grid; place-items: center; margin-right: 5px; border: 0; border-radius: 50%; background: white; box-shadow: 0 3px 9px rgba(24,29,38,.1); cursor: pointer; }
+.player button:disabled { cursor: not-allowed; opacity: .45; }
 .player i { width: 2px; border-radius: 2px; background: #a5a9b0; }
 .player i:nth-of-type(1), .player i:nth-of-type(5) { height: 7px; }
 .player i:nth-of-type(2), .player i:nth-of-type(6) { height: 13px; }
 .player i:nth-of-type(3), .player i:nth-of-type(7) { height: 9px; }
 .player i:nth-of-type(4), .player i:nth-of-type(8) { height: 16px; }
+.music-card.is-playing .player i { animation: waveform 720ms ease-in-out infinite alternate; }
+.music-card.is-playing .player i:nth-of-type(2n) { animation-delay: -240ms; }
+.music-card.is-playing .player i:nth-of-type(3n) { animation-delay: -480ms; }
+.music-card audio { display: none; }
 .stats-list { display: grid; gap: 9px; margin-top: 15px; }
 .stats-list span { display: flex; align-items: center; gap: 8px; color: #6f747d; font-size: 11px; }
 .stats-list svg { flex: 0 0 auto; font-size: 14px; }
 .stats-list strong { color: var(--ink); }
 .random-card { text-align: left; }
 .random-card .dice { width: 34px; height: 34px; display: block; margin: 16px auto 11px; }
-.random-card button { width: 100%; min-height: 34px; display: flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 8px; color: white; background: #13161c; cursor: pointer; font-size: 11px; font-weight: 650; }
-.random-card button svg { font-size: 13px; }
+.random-card > a { width: 100%; min-height: 34px; display: flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 8px; color: white; background: #13161c; cursor: pointer; font-size: 11px; font-weight: 650; }
+.random-card > a svg { font-size: 13px; }
 .random-card p { margin: 7px 0 0; color: #a0a4ab; font-size: 8px; text-align: center; }
+
+@keyframes waveform {
+  from { transform: scaleY(.55); opacity: .55; }
+  to { transform: scaleY(1.35); opacity: 1; }
+}
 
 .footer { min-height: 86px; display: flex; align-items: center; justify-content: space-between; color: #9499a1; font-size: 10px; }
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity 520ms ease, transform 520ms ease; }

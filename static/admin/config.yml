@@ -89,6 +89,7 @@ collections:
               - { name: title, label: 曲目, widget: string }
               - { name: artist, label: 艺术家, widget: string }
               - { name: cover, label: 封面, widget: cloudinary-image }
+              - { name: audio, label: 音频直链, widget: string, hint: "必须是浏览器可直接播放的 HTTPS 音频 URL；留空时播放按钮不可用" }
 
           - name: stats
             label: 统计信息

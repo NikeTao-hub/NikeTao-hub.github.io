@@ -37,6 +37,18 @@ mobileNav.querySelectorAll("a").forEach((link) => {
   });
 });
 
+const musicCard = document.querySelector(".music-card");
+const musicToggle = document.getElementById("music-toggle");
+const musicToggleIcon = document.getElementById("music-toggle-icon");
+const musicAudio = document.getElementById("music-audio");
+
+const setMusicPlaybackState = (isPlaying) => {
+  musicCard.classList.toggle("is-playing", isPlaying);
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+  musicToggle.setAttribute("aria-label", isPlaying ? "暂停音乐" : "播放音乐");
+  musicToggleIcon.setAttribute("href", isPlaying ? "#icon-pause" : "#icon-play");
+};
+
 const createIcon = (name) => {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
@@ -168,6 +180,16 @@ const applyHomepageContent = (content) => {
   const musicCover = document.getElementById("music-cover");
   musicCover.src = normalizeUrl(music.cover, "/assets/moon.jpg", true);
   musicCover.alt = music.title ? `${music.title} 专辑视觉` : "专辑视觉";
+  const audioUrl = normalizeUrl(music.audio, "");
+  musicAudio.pause();
+  setMusicPlaybackState(false);
+  if (audioUrl) {
+    musicAudio.src = audioUrl;
+    musicToggle.disabled = false;
+  } else {
+    musicAudio.removeAttribute("src");
+    musicToggle.disabled = true;
+  }
 
   const stats = content.stats || {};
   document.getElementById("stats-since").textContent = stats.since || "";
@@ -186,7 +208,6 @@ fetch("/content.json", { cache: "no-store" })
 
 const writingList = document.getElementById("writing-list");
 const postCount = document.getElementById("post-count");
-const randomPostButton = document.getElementById("random-post");
 const writingImages = ["/assets/workspace.jpg", "/assets/moon.jpg", "/assets/hero.jpg"];
 let blogItems = [];
 
@@ -264,12 +285,20 @@ fetch("/blog/index.xml")
     postCount.textContent = "29";
   });
 
-randomPostButton.addEventListener("click", () => {
-  if (!blogItems.length) {
-    window.location.href = "/blog/";
-    return;
-  }
+musicToggle.addEventListener("click", async () => {
+  if (!musicAudio.getAttribute("src")) return;
 
-  const item = blogItems[Math.floor(Math.random() * blogItems.length)];
-  window.location.href = item.link;
+  if (musicAudio.paused) {
+    try {
+      await musicAudio.play();
+    } catch {
+      setMusicPlaybackState(false);
+    }
+  } else {
+    musicAudio.pause();
+  }
 });
+
+musicAudio.addEventListener("play", () => setMusicPlaybackState(true));
+musicAudio.addEventListener("pause", () => setMusicPlaybackState(false));
+musicAudio.addEventListener("ended", () => setMusicPlaybackState(false));
