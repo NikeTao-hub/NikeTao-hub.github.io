@@ -1,7 +1,7 @@
 {
   "hero": {
     "name": "Nike Tao",
-    "tagline": "I build things, explore ideas,\nand document the journey.",
+    "tagline": "I build things, explore ideas,\nand document the journey.\n——NikeTao",
     "intro": "一个喜欢折腾的普通人，\n研究一些有趣的问题，写代码，也记录生活。\n希望在不断探索中，成为更有意思的人。",
     "note": "Good ideas.\nBetter life.\nKeep exploring.",
     "location": "Somewhere\non Earth",
@@ -11,28 +11,28 @@
   "currently": [
     {
       "label": "Building",
-      "title": "niketao.com v2",
+      "title": "niketao.com",
       "description": "让想法更好地被记录和连接"
     },
     {
       "label": "Reading",
-      "title": "《深度工作》",
-      "description": "专注地做有价值的事"
+      "title": "《中高层大气与电离层物理》",
+      "description": "中高层大气与电离层圈层耦合"
     },
     {
       "label": "Listening",
-      "title": "ODESZA",
+      "title": "哪里是你永远的拥抱",
       "description": "A Moment Apart"
     },
     {
       "label": "Learning",
-      "title": "LLM 应用开发",
-      "description": "探索 AI 与创作的可能性"
+      "title": "高层大气动力学",
+      "description": "高层大气的规律 对电离层的影响"
     },
     {
       "label": "Exploring",
-      "title": "下一站：日本",
-      "description": "计划一次春季旅行"
+      "title": "下一站：川西",
+      "description": "计划一次秋季旅行"
     }
   ],
   "projects": [
@@ -59,28 +59,46 @@
     }
   ],
   "photos": [
-    { "image": "/assets/hero.jpg", "alt": "金色银杏树下的拍摄时刻" },
-    { "image": "/assets/moon.jpg", "alt": "夜空中的月亮轨迹" },
-    { "image": "/assets/life.jpg", "alt": "手中的石榴" },
-    { "image": "/assets/training.jpg", "alt": "健身房训练空间" },
-    { "image": "/assets/hero-mountain.jpg", "alt": "山巅云海" },
-    { "image": "/assets/workspace.jpg", "alt": "咖啡与笔记本电脑" }
+    {
+      "image": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791104739/blog/20261004-170536-637-Z8L_1743-1.jpg",
+      "alt": "崂山北九水的红枫"
+    },
+    {
+      "image": "/assets/moon.jpg",
+      "alt": "夜空中的月亮轨迹"
+    },
+    {
+      "image": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791104776/blog/20261004-170615-116-Z8L_1875.jpg",
+      "alt": "天空的冰与火"
+    },
+    {
+      "image": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791104821/blog/20261004-170700-274-1.jpg",
+      "alt": "曲靖的闪电与非相干雷达"
+    },
+    {
+      "image": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791104855/blog/20261004-170734-384-Z8L_2512-3.jpg",
+      "alt": "青岛栈桥的游客与海鸥"
+    },
+    {
+      "image": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791104903/blog/20261004-170813-946-Z8L_3860.jpg",
+      "alt": "上海的北外滩"
+    }
   ],
   "book": {
-    "title": "深度工作",
+    "title": "中高层大气与电离层物理",
     "coverTitle": "深度\n工作",
-    "author": "Cal Newport",
+    "author": "雷久候",
     "progress": 60
   },
   "music": {
-    "title": "A Moment Apart",
-    "artist": "ODESZA",
-    "cover": "/assets/moon.jpg"
+    "title": "哪里是你的拥抱",
+    "artist": "逃跑计划",
+    "cover": "https://res.cloudinary.com/tr9eesw3/image/upload/v1791105035/blog/20261004-171034-166-WechatIMG375.jpg"
   },
   "stats": {
-    "since": "Since 2023.06",
+    "since": "Since 2026.10",
     "status": "持续记录与探索",
-    "books": "24",
-    "photos": "1,200+"
+    "books": "1",
+    "photos": "1,2000+"
   }
 }
