@@ -57,7 +57,9 @@ const renderWriting = (items) => {
       const image = document.createElement("img");
       const content = document.createElement("span");
       const title = document.createElement("strong");
-      const date = document.createElement("small");
+      const summary = document.createElement("p");
+      const meta = document.createElement("em");
+      const category = document.createElement("span");
 
       link.className = "writing-row";
       link.href = item.link;
@@ -67,9 +69,12 @@ const renderWriting = (items) => {
       image.width = 1400;
       image.height = 1050;
       title.textContent = item.title;
-      date.textContent = formatDate(item.date);
+      summary.textContent = item.summary;
+      meta.textContent = formatDate(item.date);
+      category.textContent = `# ${item.category}`;
+      meta.append(category);
 
-      content.append(title, date);
+      content.append(title, summary, meta);
       link.append(image, content);
       return link;
     })
@@ -89,6 +94,12 @@ fetch("/blog/index.xml")
       title: item.querySelector("title")?.textContent?.trim() || "未命名文章",
       link: item.querySelector("link")?.textContent?.trim() || "/blog/",
       date: new Date(item.querySelector("pubDate")?.textContent || Date.now()),
+      summary: (item.querySelector("description")?.textContent || "记录最近的思考与生活片段。")
+        .replace(/<[^>]*>/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 42),
+      category: item.querySelector("category")?.textContent?.trim() || "记录",
     }));
 
     if (blogItems.length) {

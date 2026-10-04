@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Nike Tao 的个人主页：研究、技术、写作与生活。">
-    <meta name="theme-color" content="#f5f6f8">
+    <meta name="theme-color" content="#f6f7f8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
     <title>Nike Tao — Personal Homepage</title>
     <link rel="icon" href="/blog/favicon.jpg">
@@ -12,163 +12,86 @@
     <script src="/site.js" defer></script>
   </head>
   <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></symbol>
+      <symbol id="icon-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 19.3 3 5.4 5.4 0 0 0 19.1-.9S17.9-1.3 15 1.6a14 14 0 0 0-7 0C5.1-1.3 3.9-.9 3.9-.9A5.4 5.4 0 0 0 3.7 3a5.8 5.8 0 0 0-1.5 4.1c0 5.8 3.5 7 6.8 7.4A4.8 4.8 0 0 0 8 18v4"/><path d="M8 19c-3 .9-3-1.5-4-2"/></symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24"><path d="M5 4l14 16M19 4 5 20"/></symbol>
+      <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+      <symbol id="icon-rss" viewBox="0 0 24 24"><circle cx="5" cy="19" r="1" fill="currentColor" stroke="none"/><path d="M4 11a9 9 0 0 1 9 9M4 5a15 15 0 0 1 15 15"/></symbol>
+      <symbol id="icon-camera" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m8 6 1.5-2h5L16 6"/><circle cx="12" cy="13" r="4"/></symbol>
+      <symbol id="icon-laptop" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="1.5"/><path d="M2 19h20"/></symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22zM20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22z"/></symbol>
+      <symbol id="icon-headphones" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="7" rx="2"/><rect x="17" y="13" width="4" height="7" rx="2"/></symbol>
+      <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20 4C10 4 5 9 5 16c5 1 10-2 15-12Z"/><path d="M4 21c2-6 6-9 12-12"/></symbol>
+      <symbol id="icon-plane" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+      <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="icon-note" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="icon-dice" viewBox="0 0 24 24"><path d="m12 2 8 4.5v9L12 20l-8-4.5v-9Z"/><circle cx="9" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24"><path d="m9 7 8 5-8 5Z" fill="currentColor" stroke="none"/></symbol>
+    </svg>
+
     <header class="topbar">
       <a class="brand" href="/" aria-label="Nike Tao 首页">niketao<span>.</span></a>
-      <nav class="desktop-nav" aria-label="主导航">
-        <a class="is-active" href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="/blog/">Blog</a>
-        <a href="#now">Now</a>
-        <a href="#photos">Photos</a>
-        <a href="#links">Links</a>
-      </nav>
-      <a class="contact-link" href="https://github.com/niketao-hub" target="_blank" rel="noreferrer">GitHub</a>
+      <nav class="desktop-nav" aria-label="主导航"><a class="is-active" href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="/blog/">Blog</a><a href="#now">Now</a><a href="#photos">Photos</a><a href="#uses">Uses</a><a href="#links">Links</a></nav>
+      <div class="top-actions"><a class="search-link" href="/blog/" aria-label="浏览博客"><svg><use href="#icon-search"/></svg></a><a class="hello-link" href="https://github.com/niketao-hub" target="_blank" rel="noreferrer">Say Hello <svg><use href="#icon-arrow"/></svg></a></div>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
-      <nav id="mobile-nav" class="mobile-nav" aria-label="移动端导航" hidden>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="/blog/">Blog</a>
-        <a href="#now">Now</a>
-        <a href="#photos">Photos</a>
-      </nav>
+      <nav id="mobile-nav" class="mobile-nav" aria-label="移动端导航" hidden><a href="#about">About</a><a href="#projects">Projects</a><a href="/blog/">Blog</a><a href="#now">Now</a><a href="#photos">Photos</a><a href="#links">Links</a></nav>
     </header>
 
-    <main id="home" class="site-shell">
+    <main id="home">
       <section id="about" class="hero" aria-labelledby="hero-title">
-        <img class="hero-photo" src="/assets/hero.jpg" alt="Nike Tao 在金色银杏树下拍照" width="1200" height="1800" fetchpriority="high">
+        <img class="hero-photo" src="/assets/hero-mountain.jpg" alt="旅行者坐在山巅眺望云海" width="2000" height="1125" fetchpriority="high">
         <div class="hero-wash" aria-hidden="true"></div>
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Research · Technology · Life</p>
-          <h1 id="hero-title">Nike Tao</h1>
-          <p class="hero-tagline">I build things, explore ideas,<br>and document the journey.</p>
-          <p class="hero-intro">一个喜欢折腾的普通人，研究一些有趣的问题，写代码，也记录生活。希望在不断探索中，成为更有意思的人。</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="#now">About Me</a>
-            <a class="button button-light" href="#projects">View My Work</a>
+        <div class="hero-inner">
+          <div class="hero-copy reveal">
+            <h1 id="hero-title">Nike Tao</h1>
+            <p class="hero-tagline">I build things, explore ideas,<br>and document the journey.</p>
+            <p class="hero-intro">一个喜欢折腾的普通人，<br>研究一些有趣的问题，写代码，也记录生活。<br>希望在不断探索中，成为更有意思的人。</p>
+            <div class="hero-actions"><a class="button button-dark" href="#now">About Me <svg><use href="#icon-arrow"/></svg></a><a class="button button-light" href="#projects">View My Work</a></div>
+            <div class="social-links" aria-label="社交链接"><a href="https://github.com/niketao-hub" target="_blank" rel="noreferrer" aria-label="GitHub"><svg><use href="#icon-github"/></svg></a><a href="#links" aria-label="社交主页"><svg><use href="#icon-x"/></svg></a><a href="/blog/" aria-label="博客"><svg><use href="#icon-mail"/></svg></a><a href="/blog/index.xml" aria-label="RSS"><svg><use href="#icon-rss"/></svg></a><a href="#photos" aria-label="照片"><svg><use href="#icon-camera"/></svg></a></div>
           </div>
-          <div class="social-links" aria-label="社交链接">
-            <a href="https://github.com/niketao-hub" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-            <a href="/blog/" aria-label="博客">B</a>
-            <a href="/blog/index.xml" aria-label="RSS">RSS</a>
-          </div>
-        </div>
-        <p class="hero-note" aria-hidden="true">Good ideas.<br>Better life.<br>Keep exploring.</p>
-        <p class="hero-location">Wuhan, China<br>Somewhere on Earth</p>
-      </section>
-
-      <section id="now" class="panel currently reveal" aria-labelledby="currently-title">
-        <div class="panel-heading">
-          <div>
-            <h2 id="currently-title">Currently</h2>
-            <span class="updated"><i aria-hidden="true"></i> Updated this week</span>
-          </div>
-          <a href="#now">/ now</a>
-        </div>
-        <div class="currently-grid">
-          <article>
-            <span class="icon-tile" aria-hidden="true">⌨</span>
-            <div><p>Building</p><strong>niketao.com v2</strong><span>让想法更好地被记录和连接</span></div>
-          </article>
-          <article>
-            <span class="icon-tile" aria-hidden="true">◎</span>
-            <div><p>Researching</p><strong>Atmosphere & Data</strong><span>理解大气与复杂系统</span></div>
-          </article>
-          <article>
-            <span class="icon-tile" aria-hidden="true">✎</span>
-            <div><p>Writing</p><strong>Research · Tech · Life</strong><span>记录正在发生的思考</span></div>
-          </article>
-          <article>
-            <span class="icon-tile" aria-hidden="true">◌</span>
-            <div><p>Moving</p><strong>Cycling & Training</strong><span>保持身体和思维流动</span></div>
-          </article>
+          <p class="hero-note" aria-hidden="true">Good ideas.<br><span>Better life.</span><br>Keep exploring.</p>
+          <p class="hero-location"><svg><use href="#icon-pin"/></svg><span>Somewhere<br>on Earth</span></p>
         </div>
       </section>
 
-      <section id="projects" class="panel reveal" aria-labelledby="projects-title">
-        <div class="panel-heading">
-          <h2 id="projects-title">Featured Projects</h2>
-          <a href="#projects">Selected work</a>
-        </div>
-        <div class="project-grid">
-          <a class="project-card" href="/">
-            <div class="project-image"><img src="/assets/workspace.jpg" alt="笔记本电脑与咖啡" width="1400" height="1050" loading="lazy"></div>
-            <p><span>Web</span><time>2026</time></p>
-            <h3>niketao.com</h3>
-            <small>个人主页，一个记录想法、项目与生活的数字角落。</small>
-          </a>
-          <a class="project-card" href="/blog/">
-            <div class="project-image project-image-dark"><img src="/assets/moon.jpg" alt="月亮轨迹摄影" width="1400" height="1120" loading="lazy"></div>
-            <p><span>Writing</span><time>Ongoing</time></p>
-            <h3>Personal Blog</h3>
-            <small>研究、技术与生活的长期写作档案。</small>
-          </a>
-          <a class="project-card" href="/blog/categories/%E7%A7%91%E7%A0%94/">
-            <div class="project-image"><img src="/assets/hero.jpg" alt="Nike Tao 手持相机" width="1200" height="1800" loading="lazy"></div>
-            <p><span>Research</span><time>Notes</time></p>
-            <h3>Research Notes</h3>
-            <small>关于大气、数据与科研过程的持续记录。</small>
-          </a>
-        </div>
-      </section>
-
-      <div class="content-grid">
-        <section id="writing" class="panel reveal" aria-labelledby="writing-title">
-          <div class="panel-heading">
-            <h2 id="writing-title">Latest Writing</h2>
-            <a href="/blog/">All posts</a>
-          </div>
-          <div id="writing-list" class="writing-list" aria-live="polite">
-            <a class="writing-row" href="/blog/">
-              <img src="/assets/workspace.jpg" alt="" width="1400" height="1050">
-              <span><strong>正在读取最新文章…</strong><small>Blog archive</small></span>
-            </a>
+      <div class="site-shell">
+        <section id="now" class="panel currently reveal" aria-labelledby="currently-title">
+          <div class="panel-heading"><div class="heading-group"><h2 id="currently-title">Currently</h2><span class="updated"><i></i> Updated this week</span></div><a href="#now">/ now <svg><use href="#icon-arrow"/></svg></a></div>
+          <div class="currently-grid">
+            <article><span class="icon-tile"><svg><use href="#icon-laptop"/></svg></span><div><p>Building</p><strong>niketao.com v2</strong><span>让想法更好地被记录和连接</span></div></article>
+            <article><span class="icon-tile"><svg><use href="#icon-book"/></svg></span><div><p>Reading</p><strong>《深度工作》</strong><span>专注地做有价值的事</span></div></article>
+            <article><span class="icon-tile"><svg><use href="#icon-headphones"/></svg></span><div><p>Listening</p><strong>ODESZA</strong><span>A Moment Apart</span></div></article>
+            <article><span class="icon-tile icon-green"><svg><use href="#icon-leaf"/></svg></span><div><p>Learning</p><strong>LLM 应用开发</strong><span>探索 AI 与创作的可能性</span></div></article>
+            <article><span class="icon-tile icon-blue"><svg><use href="#icon-plane"/></svg></span><div><p>Exploring</p><strong>下一站：日本</strong><span>计划一次春季旅行</span></div></article>
           </div>
         </section>
 
-        <section id="photos" class="panel reveal" aria-labelledby="photos-title">
-          <div class="panel-heading">
-            <h2 id="photos-title">Life in Frames</h2>
-            <span>Recent moments</span>
+        <section id="projects" class="panel reveal" aria-labelledby="projects-title">
+          <div class="panel-heading"><h2 id="projects-title">Featured Projects</h2><a href="#projects">View all projects <svg><use href="#icon-arrow"/></svg></a></div>
+          <div class="project-grid">
+            <a class="project-card" href="/"><div class="project-image"><img src="/assets/workspace.jpg" alt="笔记本电脑与咖啡" width="1400" height="1050" loading="lazy"></div><span class="project-type">Web</span><h3>niketao.com <svg><use href="#icon-arrow"/></svg></h3><p>我的个人网站，一个记录想法、项目与生活的数字角落。</p></a>
+            <a class="project-card" href="/blog/"><div class="project-image project-image-dark"><img src="/assets/moon.jpg" alt="月亮轨迹摄影" width="1400" height="1120" loading="lazy"></div><span class="project-type">Writing</span><h3>Personal Blog <svg><use href="#icon-arrow"/></svg></h3><p>研究、技术与生活的长期写作档案。</p></a>
+            <a class="project-card" href="/blog/categories/%E7%A7%91%E7%A0%94/"><div class="project-image"><img src="/assets/hero.jpg" alt="Nike Tao 手持相机" width="1200" height="1800" loading="lazy"></div><span class="project-type">Research</span><h3>Research Notes <svg><use href="#icon-arrow"/></svg></h3><p>关于大气、数据与科研过程的持续记录。</p></a>
           </div>
-          <div class="photo-grid">
-            <figure class="photo-wide"><img src="/assets/hero.jpg" alt="金色银杏树下的拍摄时刻" width="1200" height="1800" loading="lazy"></figure>
-            <figure><img src="/assets/moon.jpg" alt="夜空中的月亮轨迹" width="1400" height="1120" loading="lazy"></figure>
-            <figure><img src="/assets/workspace.jpg" alt="咖啡与笔记本电脑" width="1400" height="1050" loading="lazy"></figure>
-            <figure><img src="/assets/training.jpg" alt="健身房训练空间" width="1400" height="1050" loading="lazy"></figure>
-            <figure><img src="/assets/life.jpg" alt="手中的石榴" width="1050" height="1400" loading="lazy"></figure>
-          </div>
+        </section>
+
+        <div class="content-grid">
+          <section id="writing" class="panel reveal" aria-labelledby="writing-title"><div class="panel-heading"><h2 id="writing-title">Latest Writing</h2><a href="/blog/">View all posts <svg><use href="#icon-arrow"/></svg></a></div><div id="writing-list" class="writing-list" aria-live="polite"><a class="writing-row" href="/blog/"><img src="/assets/workspace.jpg" alt="" width="1400" height="1050"><span><strong>正在读取最新文章…</strong><em>Blog archive</em></span></a></div></section>
+          <section id="photos" class="panel reveal" aria-labelledby="photos-title"><div class="panel-heading"><h2 id="photos-title">Life in Frames</h2><a href="#photos">View more <svg><use href="#icon-arrow"/></svg></a></div><div class="photo-grid"><figure><img src="/assets/hero.jpg" alt="金色银杏树下的拍摄时刻" width="1200" height="1800" loading="lazy"></figure><figure><img src="/assets/moon.jpg" alt="夜空中的月亮轨迹" width="1400" height="1120" loading="lazy"></figure><figure><img src="/assets/life.jpg" alt="手中的石榴" width="1050" height="1400" loading="lazy"></figure><figure><img src="/assets/training.jpg" alt="健身房训练空间" width="1400" height="1050" loading="lazy"></figure><figure><img src="/assets/hero-mountain.jpg" alt="山巅云海" width="2000" height="1125" loading="lazy"></figure><figure><img src="/assets/workspace.jpg" alt="咖啡与笔记本电脑" width="1400" height="1050" loading="lazy"></figure></div></section>
+        </div>
+
+        <section id="links" class="info-grid reveal" aria-label="更多信息">
+          <article class="mini-card book-card"><h3>Books</h3><small>Currently reading</small><div class="book-content"><div class="book-cover"><b>深度<br>工作</b><span>DEEP WORK</span></div><div><strong>深度工作</strong><span>Cal Newport</span><div class="progress"><i></i></div><em>60%</em></div></div></article>
+          <article class="mini-card music-card"><h3>Music</h3><small>Recently played</small><div class="music-content"><img src="/assets/moon.jpg" alt="A Moment Apart 专辑视觉" width="1400" height="1120" loading="lazy"><div><strong>A Moment Apart</strong><span>ODESZA</span><div class="player"><button aria-label="播放"><svg><use href="#icon-play"/></svg></button><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></article>
+          <article class="mini-card stats-card"><h3>Stats</h3><small>Since 2023.06</small><div class="stats-list"><span><svg><use href="#icon-note"/></svg>写了 <strong id="post-count">—</strong> 篇文章</span><span><svg><use href="#icon-clock"/></svg>持续记录与探索</span><span><svg><use href="#icon-book"/></svg>读了 24 本书</span><span><svg><use href="#icon-camera"/></svg>拍了 1,200+ 张照片</span></div></article>
+          <article class="mini-card random-card"><h3>Random</h3><small>发现一个随机内容</small><svg class="dice"><use href="#icon-dice"/></svg><button id="random-post" type="button">来点惊喜吧！ <svg><use href="#icon-arrow"/></svg></button><p>随机一篇文章 / 一张照片 / 一个项目</p></article>
         </section>
       </div>
-
-      <section id="links" class="info-grid reveal" aria-label="更多信息">
-        <article class="mini-card">
-          <p>Uses</p>
-          <small>Current stack</small>
-          <div class="stack-list"><span>Hugo</span><span>GitHub Pages</span><span>Decap CMS</span></div>
-        </article>
-        <article class="mini-card">
-          <p>Stats</p>
-          <small>Growing archive</small>
-          <div class="stats-list"><span><strong id="post-count">—</strong> 篇文章</span><span><strong>3</strong> 个主题</span><span><strong>1</strong> 个独立域名</span></div>
-        </article>
-        <article class="mini-card random-card">
-          <p>Random</p>
-          <small>发现一个随机内容</small>
-          <span class="dice" aria-hidden="true">⚄</span>
-          <button id="random-post" type="button">随便读一篇</button>
-        </article>
-        <article class="mini-card">
-          <p>Elsewhere</p>
-          <small>Find me online</small>
-          <div class="elsewhere-links"><a href="https://github.com/niketao-hub" target="_blank" rel="noreferrer">GitHub</a><a href="/blog/">Blog</a><a href="/blog/index.xml">RSS</a></div>
-        </article>
-      </section>
     </main>
 
-    <footer class="footer">
-      <p>© <span id="year">2026</span> Nike Tao</p>
-      <p>Research · Technology · Life</p>
-    </footer>
+    <footer id="uses" class="footer"><p>© <span id="year">2026</span> Nike Tao</p><p>Research · Technology · Life</p></footer>
   </body>
 </html>
